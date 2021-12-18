@@ -6,13 +6,135 @@
     <title>Document</title>
   </head>
   <body>
-    <ul>
-      <li>
-        <a href="https://qr.amurf.dev">https://qr.amurf.dev</a>
-      </li>
-      <li>
-        <a href="https://psx.amurf.dev">https://psx.amurf.dev</a>
-      </li>
-    </ul>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+      body {
+        font-family: "Bebas Neue", sans-serif;
+      }
+
+      .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        perspective: 600px;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+      }
+
+      .business-card-wrapper {
+        display: flex;
+        flex-direction: column;
+        backface-visibility: hidden;
+      }
+
+      .card {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        padding: 1em;
+        width: 50%;
+        float: left;
+        perspective: 500px;
+      }
+
+      .content {
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        padding: 2em;
+      }
+
+      .card .content.is-flipped {
+        transform: rotateY(180deg);
+        transition: transform 0.5s;
+      }
+
+      .front,
+      .back {
+        background: white;
+        border-radius: 5px;
+        backface-visibility: hidden;
+      }
+
+      .content.is-flipped .front {
+        display: none;
+      }
+
+      .content:not(.is-flipped) .back {
+        display: none;
+      }
+
+      .back {
+        transform: rotateY(180deg);
+      }
+    </style>
+
+    <script lang="script/javascript">
+
+
+      ready(() => {
+      	document.querySelector(".content").addEventListener("click", flipCard);
+      });
+
+
+      function ready(fn) {
+      	if (document.readyState != 'loading'){
+      		fn();
+      	} else {
+      		document.addEventListener('DOMContentLoaded', fn);
+      	}
+      }
+      function flipCard() {
+      	const card = document.querySelector(".card .content");
+
+        if (card.classList.contains("is-flipped")) {
+          card.classList.remove("is-flipped");
+        } else {
+          card.classList.add("is-flipped");
+        }
+      }
+    </script>
+
+    <div class="wrapper">
+      <div class="card">
+        <div class="content">
+          <div class="front card-grid">
+            <div class="details">
+              <h1>Ashley Murphy</h1>
+              <h2>Internet Website creationist</h2>
+              <p>irashp@gmail.com</p>
+            </div>
+
+            <div class="skills-projects">
+              <h3>skillz</h3>
+              <ul>
+                <li>vue</li>
+                <li>node</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="back card-grid">
+            <div>
+              <h1>QR</h1>
+              <a href="#">qr.amurf.dev</a>
+              <p>order details here</p>
+            </div>
+
+            <div>
+              <h1>PSX</h1>
+              <a href="#">psx.amurf.dev</a>
+              <p>psx details here</p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
