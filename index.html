@@ -9,6 +9,7 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
+
       body {
         font-family: "Bebas Neue", sans-serif;
       }
@@ -71,25 +72,32 @@
         transform: rotateY(180deg);
         right: 0;
       }
+
+      @media only screen and (max-width: 600px) {
+        .card {
+          transform: rotate(270deg);
+          width: 100%;
+        }
+      }
     </style>
 
     <script lang="script/javascript">
 
 
       ready(() => {
-      	document.querySelector(".content").addEventListener("click", flipCard);
+        document.querySelector(".content").addEventListener("click", flipCard);
       });
 
 
       function ready(fn) {
-      	if (document.readyState != 'loading'){
-      		fn();
-      	} else {
-      		document.addEventListener('DOMContentLoaded', fn);
-      	}
+        if (document.readyState != 'loading'){
+          fn();
+        } else {
+          document.addEventListener('DOMContentLoaded', fn);
+        }
       }
       function flipCard() {
-      	const card = document.querySelector(".card .content");
+        const card = document.querySelector(".card .content");
 
         if (card.classList.contains("is-flipped")) {
           card.classList.remove("is-flipped");
@@ -130,10 +138,10 @@
               <a href="#">psx.amurf.dev</a>
               <p>psx details here</p>
             </div>
-            </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </body>
 </html>
