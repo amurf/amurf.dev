@@ -139,7 +139,15 @@
           document.addEventListener('DOMContentLoaded', fn);
         }
       }
-      function flipCard() {
+      function flipCard(event) {
+
+        // Don't flip if clicking links within card.
+        // TODO: This should handle more tags, but for now this
+        // is all we need.
+        if (event.target.tagName == 'A') {
+          return;
+        }
+
         const card = document.querySelector(".card .content");
 
         if (card.classList.contains("is-flipped")) {
