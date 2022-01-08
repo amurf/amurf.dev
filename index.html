@@ -173,12 +173,7 @@
         }
 
         const card = document.querySelector(".card .content");
-
-        if (card.classList.contains("is-flipped")) {
-          card.classList.remove("is-flipped");
-        } else {
-          card.classList.add("is-flipped");
-        }
+        card.classList.toggle("is-flipped");
       }
     </script>
 
